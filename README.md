@@ -49,3 +49,4 @@ hutool
 - [x] ~~redis~~
 
 - [ ] kafka
+- [ ] socket

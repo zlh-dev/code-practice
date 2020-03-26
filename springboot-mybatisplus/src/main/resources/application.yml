@@ -4,7 +4,7 @@ server:
   tomcat:
     uri-encoding: UTF-8
   servlet:
-    context-path: /springboot-redis # 访问前缀
+    context-path: /springboot-mybatisplus # 访问前缀
 
 ######################## spring config : ########################
 spring:
@@ -65,6 +65,11 @@ mybatis-plus:
     map-underscore-to-camel-case: true # 是否开启自动驼峰命名规则（camel case）映射
     call-setters-on-nulls: true # MyBatis 在使用 resultMap 来映射查询结果中的列，如果查询结果中包含空值的列
     jdbc-type-for-null: 'null' # 如果type为空
+  # MyBatis-Plus 全局策略配置
+  global-config:
+    banner: false # 是否显示mybatis-plus的图标
+    db-config:
+      id-type: auto # 全局默认主键类型，AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID"
 
 ######################## log config : ########################
 logging:

@@ -61,9 +61,9 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/administrative_divisions?useUnicode=true&useSSL=false&characterEncoding=utf8mb4");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/administrative_divisions?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC");
         // dsc.setSchemaName("public");
-        dsc.setDriverName("com.mysql.jdbc.Driver");
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
         mpg.setDataSource(dsc);

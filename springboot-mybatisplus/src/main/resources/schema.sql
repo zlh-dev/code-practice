@@ -8,11 +8,11 @@
 DROP TABLE IF EXISTS `areas`;
 CREATE TABLE IF NOT EXISTS `areas`
 (
-    `code`         bigint(12)                                                   NOT NULL COMMENT '统计用区划代码',
-    `name`         varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
-    `cityCode`     bigint(12)                                                   NOT NULL COMMENT '地级区划代码',
-    `provinceCode` bigint(12)                                                   NOT NULL COMMENT '省级区划代码',
-    `deleted`      TINYINT(1) UNSIGNED ZEROFILL                                 NOT NULL DEFAULT '0' COMMENT '删除标记',
+    `code`          bigint(12)                                                   NOT NULL COMMENT '统计用区划代码',
+    `name`          varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
+    `city_code`     bigint(12)                                                   NOT NULL COMMENT '地级区划代码',
+    `province_code` bigint(12)                                                   NOT NULL COMMENT '省级区划代码',
+    `deleted`       TINYINT(1) UNSIGNED ZEROFILL                                 NOT NULL DEFAULT '0' COMMENT '删除标记',
     PRIMARY KEY (`code`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -22,10 +22,10 @@ CREATE TABLE IF NOT EXISTS `areas`
 DROP TABLE IF EXISTS `cities`;
 CREATE TABLE IF NOT EXISTS `cities`
 (
-    `code`         bigint(12)                                                   NOT NULL COMMENT '统计用区划代码',
-    `name`         varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
-    `provinceCode` bigint(12)                                                   NOT NULL COMMENT '省级区划代码',
-    `deleted`      TINYINT(1) UNSIGNED ZEROFILL                                 NOT NULL DEFAULT '0' COMMENT '删除标记',
+    `code`          bigint(12)                                                   NOT NULL COMMENT '统计用区划代码',
+    `name`          varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
+    `province_code` bigint(12)                                                   NOT NULL COMMENT '省级区划代码',
+    `deleted`       TINYINT(1) UNSIGNED ZEROFILL                                 NOT NULL DEFAULT '0' COMMENT '删除标记',
     PRIMARY KEY (`code`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -47,12 +47,12 @@ CREATE TABLE IF NOT EXISTS `provinces`
 DROP TABLE IF EXISTS `streets`;
 CREATE TABLE IF NOT EXISTS `streets`
 (
-    `code`         bigint(12)                                                   NOT NULL COMMENT '统计用区划代码',
-    `name`         varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
-    `areaCode`     bigint(12)                                                   NOT NULL COMMENT '县级区划代码',
-    `cityCode`     bigint(12)                                                   NOT NULL COMMENT '地级区划代码',
-    `provinceCode` bigint(12)                                                   NOT NULL COMMENT '省级区划代码',
-    `deleted`      TINYINT(1) UNSIGNED ZEROFILL                                 NOT NULL DEFAULT '0' COMMENT '删除标记',
+    `code`          bigint(12)                                                   NOT NULL COMMENT '统计用区划代码',
+    `name`          varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
+    `area_code`     bigint(12)                                                   NOT NULL COMMENT '县级区划代码',
+    `city_code`     bigint(12)                                                   NOT NULL COMMENT '地级区划代码',
+    `province_code` bigint(12)                                                   NOT NULL COMMENT '省级区划代码',
+    `deleted`       TINYINT(1) UNSIGNED ZEROFILL                                 NOT NULL DEFAULT '0' COMMENT '删除标记',
     PRIMARY KEY (`code`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -62,13 +62,13 @@ CREATE TABLE IF NOT EXISTS `streets`
 DROP TABLE IF EXISTS `villages`;
 CREATE TABLE IF NOT EXISTS `villages`
 (
-    `code`         bigint(12)                                                   NOT NULL COMMENT '统计用区划代码',
-    `name`         varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
-    `streetCode`   bigint(12)                                                   NOT NULL COMMENT '乡级区划代码',
-    `areaCode`     bigint(12)                                                   NOT NULL COMMENT '县级区划代码',
-    `cityCode`     bigint(12)                                                   NOT NULL COMMENT '地级区划代码',
-    `provinceCode` bigint(12)                                                   NOT NULL COMMENT '省级区划代码',
-    `deleted`      TINYINT(1) UNSIGNED ZEROFILL                                 NOT NULL DEFAULT '0' COMMENT '删除标记',
+    `code`          bigint(12)                                                   NOT NULL COMMENT '统计用区划代码',
+    `name`          varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
+    `street_code`   bigint(12)                                                   NOT NULL COMMENT '乡级区划代码',
+    `area_code`     bigint(12)                                                   NOT NULL COMMENT '县级区划代码',
+    `city_code`     bigint(12)                                                   NOT NULL COMMENT '地级区划代码',
+    `province_code` bigint(12)                                                   NOT NULL COMMENT '省级区划代码',
+    `deleted`       TINYINT(1) UNSIGNED ZEROFILL                                 NOT NULL DEFAULT '0' COMMENT '删除标记',
     PRIMARY KEY (`code`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4

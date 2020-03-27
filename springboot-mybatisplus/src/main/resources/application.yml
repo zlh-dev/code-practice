@@ -24,47 +24,40 @@ spring:
     ansi:
       enabled: detect # 检查终端是否支持ANSI，是的话就采用彩色输出
 
-  ######################## druid config : ########################
+  ######################## jdbc config : ########################
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/learn_and_practice?useUnicode=true&characterEncoding=utf8mb4&useSSL=true&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/administrative_divisions?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
     username: root
     password: root
-    # druid连接池配置
-    type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      initial-size: 5 #初始化时建立物理连接的个数
-      min-idle: 5 #最小连接池数量
-      max-active: 20 #最大连接池数量 maxIdle已经不再使用
-      max-wait: 60000 #获取连接时最大等待时间，单位毫秒
-      test-while-idle: true #申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
-      time-between-eviction-runs-millis: 60000 #既作为检测的间隔时间又作为testWhileIdel执行的依据
-      min-evictable-idle-time-millis: 30000 #销毁线程时检测当前连接的最后活动时间和当前时间差大于该值时，关闭当前连接
-      #用来检测连接是否有效的sql 必须是一个查询语句
-      #mysql中为 select 'x'
-      #oracle中为 select 1 from dual
-      validation-query: select 'x'
-      test-on-borrow: false #申请连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
-      test-on-return: false #归还连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
-      pool-prepared-statements: true #是否缓存preparedStatement,mysql5.5+建议开启
-      max-pool-prepared-statement-per-connection-size: 20 #当值大于0时poolPreparedStatements会自动修改为true
-      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 #通过connectProperties属性来打开mergeSql功能；慢SQL记录
-      use-global-data-source-stat: true #合并多个DruidDataSource的监控数据
-      #设置访问druid监控页的账号和密码,默认没有（项目地址/druid/index.html）
-      stat-view-servlet:
-        login-username: admin
-        login-password: admin
+    platform: mysql
+    separator: ; # sql脚本中语句分隔符
+    sql-script-encoding: utf-8 # sql文件的编码
+    schema: classpath:schema.sql # 表初始化语句
+    data: classpath:data.sql # 数据初始化
+    initialization-mode: always # 初始化模式（springboot2.0），其中有三个值，always为始终执行初始化，embedded只初始化内存数据库（默认值）,如h2等，never为不执行初始化。
+    continue-on-error: false # 遇到语句错误时是否继续，若已经执行过某些语句，再执行可能会报错，可以忽略，不会影响程序启动
+    # Hikari will use the above plus the following to setup connection pooling
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5 # 最小连接池数量。如果空闲连接低于此值并且连接池中的总连接数少于此值maximumPoolSize，则HikariCP将尽最大努力快速高效地添加其他连接。但是，为了获得最佳性能和响应尖峰需求，我们建议不要设置此值，而是允许HikariCP充当固定大小的连接池。默认值：与maximumPoolSize相同
+      maximum-pool-size: 15 # 池允许达到的最大大小，包括空闲和正在使用的连接。基本上这个值将决定到数据库后端的最大实际连接数。对此的合理价值最好由您的执行环境决定。当池达到此大小并且没有空闲连接可用时，对getConnection（）的调用将connectionTimeout在超时前阻塞达几毫秒。请阅读关于游泳池尺寸。 默认值：10
+      auto-commit: true # 此属性控制从池返回的连接的默认自动提交行为。它是一个布尔值。 默认值：true
+      idle-timeout: 30000 # 允许连接在池中闲置的最长时间。 此设置仅适用于minimumIdle定义为小于maximumPoolSize。一旦池达到连接，空闲连接将不会退出minimumIdle。连接是否因闲置而退出，最大变化量为+30秒，平均变化量为+15秒。在超时之前，连接永远不会退出。值为0意味着空闲连接永远不会从池中删除。允许的最小值是10000ms（10秒）。 默认值：600000（10分钟）
+      connection-timeout: 3000 # 此属性控制客户端（即您）将等待来自池的连接的最大毫秒数。如果在没有可用连接的情况下超过此时间，则会抛出SQLException。最低可接受的连接超时时间为250 ms。默认值：30000（30秒）
+      max-lifetime: 600000 # 池中连接的最大生存期。正在使用的连接永远不会退休，只有在关闭后才会被删除。在逐个连接的基础上，应用较小的负面衰减来避免池中的大量消失。 我们强烈建议设置此值，并且应该比任何数据库或基础设施规定的连接时间限制短几秒。 值为0表示没有最大寿命（无限寿命），当然是idleTimeout设定的主题。 默认值：1800000（30分钟）
 
 ######################## mybatis-plus config : ########################
 mybatis-plus:
   type-aliases-package: cn.code.springbootmybatisplus.entity
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
   # mybatis 的原生配置
   configuration:
     cache-enabled: false # 是否开启缓存
     map-underscore-to-camel-case: true # 是否开启自动驼峰命名规则（camel case）映射
     call-setters-on-nulls: true # MyBatis 在使用 resultMap 来映射查询结果中的列，如果查询结果中包含空值的列
     jdbc-type-for-null: 'null' # 如果type为空
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
   # MyBatis-Plus 全局策略配置
   global-config:
     banner: false # 是否显示mybatis-plus的图标

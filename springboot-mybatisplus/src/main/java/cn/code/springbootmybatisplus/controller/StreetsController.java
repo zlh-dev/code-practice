@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020/03/27 23:32
  */
 @RestController
-@RequestMapping("/springboot-mybatisplus/streets")
+@RequestMapping("streets")
 public class StreetsController {
 
 }

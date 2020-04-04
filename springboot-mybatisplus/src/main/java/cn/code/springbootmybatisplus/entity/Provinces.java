@@ -9,8 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
-
 /**
  * 省级（省份直辖市自治区）
  *
@@ -21,7 +19,7 @@ import java.io.Serializable;
 @Builder
 @Accessors(chain = true)
 @ApiModel(value = "Provinces对象", description = "省级（省份直辖市自治区）")
-public class Provinces implements Serializable {
+public class Provinces {
 
     /**
      * 统计用区划代码

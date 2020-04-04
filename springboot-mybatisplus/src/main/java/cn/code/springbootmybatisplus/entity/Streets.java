@@ -9,8 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
-
 /**
  * 乡级（乡镇街道）
  *
@@ -21,7 +19,7 @@ import java.io.Serializable;
 @Builder
 @Accessors(chain = true)
 @ApiModel(value = "Streets对象", description = "乡级（乡镇街道）")
-public class Streets implements Serializable {
+public class Streets {
 
     /**
      * 统计用区划代码

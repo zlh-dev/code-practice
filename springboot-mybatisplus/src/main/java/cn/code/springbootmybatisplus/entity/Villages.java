@@ -9,8 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
-
 
 /**
  * 村级（村委会居委会）
@@ -22,7 +20,7 @@ import java.io.Serializable;
 @Builder
 @Accessors(chain = true)
 @ApiModel(value = "Villages对象", description = "村级（村委会居委会）")
-public class Villages implements Serializable {
+public class Villages {
 
     /**
      * 统计用区划代码

@@ -28,20 +28,22 @@ public class FIleController {
 
     /**
      * 动态模板下载
+     *
      * @param templateType
      * @param request
      * @return
      */
     @GetMapping("/response/{templateType}")
-    public ResponseEntity<Object> dynamicDownload(@PathVariable("templateType")String templateType, HttpServletRequest request)throws Exception{
-        Assert.notBlank(templateType,"必须只当一个模板类型");
+    public ResponseEntity<Object> dynamicDownload(@PathVariable("templateType") String templateType, HttpServletRequest request) throws Exception {
+        Assert.notBlank(templateType, "必须只当一个模板类型");
 
         FileContent fileContent = fileUploadService.dynamicRendering(TempType.valueOf(templateType), request);
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_ATOM_XML);
-        headers.setContentDispositionFormData("attachment",new String(fileContent.getFileName().getBytes(StandardCharsets.UTF_8),StandardCharsets.UTF_8));
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        //解决文件名乱码问题-------在utf8编码的环境下需要文件名以utf8的方式解码，在以ISO 8859-1的方式编码，
+        headers.setContentDispositionFormData("attachment", new String(fileContent.getFileName().getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
 
 
-        return new ResponseEntity<>(fileContent.getContent(),headers, HttpStatus.OK);
+        return new ResponseEntity<>(fileContent.getContent(), headers, HttpStatus.OK);
     }
 }

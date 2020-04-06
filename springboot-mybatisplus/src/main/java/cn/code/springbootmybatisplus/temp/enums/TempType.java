@@ -29,7 +29,10 @@ public enum TempType {
         this.defaultFileName = defaultFileName;
     }
 
-    //模板文件路径
+    /**
+     * 模板文件路径
+     * @return
+     */
     public String getFilePath(){
         return String.format(FILE_TEMPLATE_PATH_FORMAT,fileType.getType(),getFileName());
     }

@@ -1,13 +1,10 @@
 package cn.code.springbootmybatisplus.temp.proce;
 
 import cn.code.springbootmybatisplus.temp.bean.FileContent;
-import cn.code.springbootmybatisplus.temp.enums.FileType;
 import cn.code.springbootmybatisplus.temp.enums.TempType;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.awt.im.InputContext;
-import java.awt.im.InputSubset;
 import java.io.InputStream;
 import java.util.Objects;
 

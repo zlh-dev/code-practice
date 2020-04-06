@@ -25,7 +25,7 @@ public class FileUploadServiceImpl implements FileUploadService {
     @Override
     public FileContent staticTemplateDownload(TempType tempType) throws Exception {
         //静态模板直接下载
-        return new FileContent(IoUtil.readBytes(getInputStream(tempType),Boolean.TRUE),null);
+        return new FileContent(IoUtil.readBytes(getInputStream(tempType),Boolean.TRUE),tempType.getDefaultFileName());
     }
 
     @Override

@@ -1,6 +1,6 @@
 ######################## common config : ########################
 server:
-  port: 8081
+  port: 8881
   tomcat:
     uri-encoding: UTF-8
   servlet:
@@ -27,16 +27,16 @@ spring:
   ######################## jdbc config : ########################
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/administrative_divisions?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
-    username: root
-    password: root
-    platform: mysql
-    separator: ; # sql脚本中语句分隔符
-    sql-script-encoding: utf-8 # sql文件的编码
-    schema: classpath:schema.sql # 表初始化语句
-    data: classpath:data.sql # 数据初始化
-    initialization-mode: always # 初始化模式（springboot2.0），其中有三个值，always为始终执行初始化，embedded只初始化内存数据库（默认值）,如h2等，never为不执行初始化。
-    continue-on-error: false # 遇到语句错误时是否继续，若已经执行过某些语句，再执行可能会报错，可以忽略，不会影响程序启动
+    url: jdbc:mysql://localhost:3306/administrative_divisions?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8
+    username: dev_root
+    password: 123@qweasd
+#    platform: mysql
+#    separator: ; # sql脚本中语句分隔符
+#    sql-script-encoding: utf-8 # sql文件的编码
+#    schema: classpath:schema.sql # 表初始化语句
+#    data: classpath:data.sql # 数据初始化
+#    initialization-mode: always # 初始化模式（springboot2.0），其中有三个值，always为始终执行初始化，embedded只初始化内存数据库（默认值）,如h2等，never为不执行初始化。
+#    continue-on-error: false # 遇到语句错误时是否继续，若已经执行过某些语句，再执行可能会报错，可以忽略，不会影响程序启动
     # Hikari will use the above plus the following to setup connection pooling
     type: com.zaxxer.hikari.HikariDataSource
     hikari:

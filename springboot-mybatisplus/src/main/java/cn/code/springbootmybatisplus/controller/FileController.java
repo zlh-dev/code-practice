@@ -19,6 +19,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * 文件Controller
+ *
+ * @author wyx
+ * @date 2020/04/06 22:47
+ */
 @RestController
 @RequestMapping("/file")
 @Slf4j
@@ -31,10 +37,11 @@ public class FileController {
      * 动态模板下载
      * 须继承 cn.code.springbootmybatisplus.temp.proce.AbstractProcession
      * excel 类型实现 cn.code.springbootmybatisplus.temp.proce.AbstractProcession#customize(java.io.InputStream, javax.servlet.http.HttpServletRequest)
-     *目前之兼容了 excel文件类型，DOC，PDF文件类型会在后续更新
-     * @param templateType
-     * @param request
-     * @return
+     * 目前之兼容了 excel文件类型，DOC，PDF文件类型会在后续更新
+     *
+     * @param templateType 模板类型
+     * @param request      请求
+     * @return {@link ResponseEntity<Object>}
      */
     @GetMapping("/response/{templateType}")
     public ResponseEntity<Object> dynamicDownload(@PathVariable("templateType") String templateType, HttpServletRequest request) {
@@ -51,6 +58,12 @@ public class FileController {
 
     }
 
+    /**
+     * 静态文件下载
+     *
+     * @param templateType 模板类型
+     * @return {@link ResponseEntity<Object>}
+     */
     @GetMapping("static/{templateType}")
     public ResponseEntity<Object> staticFileDownload(@PathVariable("templateType") String templateType){
         try{
@@ -68,8 +81,9 @@ public class FileController {
 
     /**
      * 文件下载头信息公共处理
+     *
      * @param fileContent 包含文件信息的字节数组和文件名
-     * @return
+     * @return {@link ResponseEntity<Object>}
      */
     private ResponseEntity<Object> fileHeadersAndDownload(@NotNull FileContent fileContent){
 

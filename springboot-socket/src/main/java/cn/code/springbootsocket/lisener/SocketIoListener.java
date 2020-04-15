@@ -1,6 +1,6 @@
 package cn.code.springbootsocket.lisener;
 
-import cn.code.springbootsocket.util.Socketio;
+import cn.code.springbootsocket.util.SocketIo;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.ServletContextEvent;
@@ -17,14 +17,14 @@ public class SocketIoListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         //启动Socketio服务
-        Socketio socketio = new Socketio();
+        SocketIo socketio = new SocketIo();
         socketio.startServer();
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         //关闭Socketio服务
-        Socketio socketio = new Socketio();
+        SocketIo socketio = new SocketIo();
         socketio.stopSocketIo();
     }
 

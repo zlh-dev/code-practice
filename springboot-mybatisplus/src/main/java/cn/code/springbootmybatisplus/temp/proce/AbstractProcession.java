@@ -20,12 +20,11 @@ public abstract class AbstractProcession implements PersonalizedCustomization{
         TempType tempType = getFileType();
         switch (tempType.getFileType()){
             case DOC:
+            case PDF :
                 return null;
             case EXC :
                 FileContent customize = customize(templateInputStream, request);
                 return fileNameEnhancement(tempType,customize);
-            case PDF :
-                return null;
             default:throw new RuntimeException("模板为非指定的文件类型");
         }
     }
@@ -35,20 +34,19 @@ public abstract class AbstractProcession implements PersonalizedCustomization{
      * @param templateInputStream 包含模板文件信息的输入流
      * @param request 请求对象
      * @return 包含文件数据
-     * @throws Exception 异常
      */
     public abstract FileContent customize(InputStream templateInputStream,HttpServletRequest request);
 
 
     /**
      * 文件名增强
-     *
+     * <p>
      * 如果文件名不为空直接返回
      * 为空则使用默认文件名
      *
-     * @param tempType
-     * @param fileContent
-     * @return
+     * @param tempType    临时类型
+     * @param fileContent 文件内容
+     * @return {@link FileContent}
      */
     private FileContent fileNameEnhancement(TempType tempType,FileContent fileContent){
 

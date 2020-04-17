@@ -37,45 +37,8 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.2.6.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <!-- fastjson -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>1.2.68</version>
-            </dependency>
-            <!-- mybatis-plus -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.19</version>
-            </dependency>
-            <!-- mybatis-plus -->
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.3.1</version>
-            </dependency>
-            <!-- velocity -->
-            <dependency>
-                <groupId>org.freemarker</groupId>
-                <artifactId>freemarker</artifactId>
-                <version>2.3.30</version>
-            </dependency>
-            <!-- excel文件工具 -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>easyexcel</artifactId>
-                <version>2.1.6</version>
-            </dependency>
-            <!-- socket-io -->
-            <dependency>
-                <groupId>com.corundumstudio.socketio</groupId>
-                <artifactId>netty-socketio</artifactId>
-                <version>1.7.18</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -95,12 +58,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!-- google-guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>29.0-jre</version>
         </dependency>
         <!-- commons-lang3 -->
         <dependency>

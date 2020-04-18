@@ -8,9 +8,6 @@ server:
 
 ######################## socket-io config : #####################
 socket:
-  config:
-    host-name: localhost
-    post: 9090
-    max-frame-payload-length: 1048576
-    max-http-content-length: 1048576
+  ip: localhost
+  port: 9090
 

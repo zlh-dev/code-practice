@@ -4,7 +4,7 @@ server:
   tomcat:
     uri-encoding: UTF-8
   servlet:
-    context-path: /oss # ·ÃÎÊÇ°×º
+    context-path: /oss # è®¿é—®å‰ç¼€
 
 ######################## thymeleaf config : ########################
 spring:
@@ -20,9 +20,9 @@ spring:
 ######################## oss config : ########################
 aliyun:
   oss:
-    endpoint: oss-cn-hangzhou-internal.aliyuncs.com # °¢ÀïÔÆÄÚÍø»òÕßÍâÍøµÄ·ÃÎÊµØÖ·
-    accessKeyId: LTAI4GF8EMVt1DUJ456VpJMH # ·ÃÎÊÉí·İÑéÖ¤ÖĞÓÃµ½ÓÃ»§±êÊ¶
-    accessKeySecret: KdC1RbFjyrdQzzE2sPIWEe7dZ7KMaC # ÓÃ»§ÓÃÓÚ¼ÓÃÜÇ©Ãû×Ö·û´®ºÍossÓÃÀ´ÑéÖ¤Ç©Ãû×Ö·û´®µÄÃÜÔ¿
-    bucketName: code-dev # ossµÄ´æ´¢¿Õ¼ä
-    urlPrefix: code-dev.oss-cn-hangzhou-internal.aliyuncs.com
-    callback: http://localhost:8080/aliyun/oss/callback # ÎÄ¼şÉÏ´«³É¹¦ºóµÄ»Øµ÷µØÖ·
+    endpoint: 123 # é˜¿é‡Œäº‘å†…ç½‘æˆ–è€…å¤–ç½‘çš„è®¿é—®åœ°å€
+    accessKeyId: 123 # è®¿é—®èº«ä»½éªŒè¯ä¸­ç”¨åˆ°ç”¨æˆ·æ ‡è¯†
+    accessKeySecret: 123 # ç”¨æˆ·ç”¨äºåŠ å¯†ç­¾åå­—ç¬¦ä¸²å’Œossç”¨æ¥éªŒè¯ç­¾åå­—ç¬¦ä¸²çš„å¯†é’¥
+    bucketName: 123 # ossçš„å­˜å‚¨ç©ºé—´
+    urlPrefix: 123
+#    callback: http://localhost:8080/oss/callback # æ–‡ä»¶ä¸Šä¼ æˆåŠŸåçš„å›è°ƒåœ°å€

@@ -1,0 +1,16 @@
+######################## common config : ########################
+server:
+  port: 8803
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /socket # \u8BBF\u95EE\u524D\u7F00
+
+######################## socket-io config : #####################
+socket:
+  config:
+    host-name: localhost
+    post: 9090
+    max-frame-payload-length: 1048576
+    max-http-content-length: 1048576
+

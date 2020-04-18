@@ -11,7 +11,7 @@
 <script src="https://cdn.staticfile.org/socket.io/2.3.0/socket.io.js"></script>
 <script type="text/javascript">
     <!-- 实时从指定查看是否有消息 -->
-    var socket = io.connect('localhost:9092');
+    const socket = io.connect('localhost:9092');
     socket.on('connect_msg', function (data) {
         alert(data);
         // var personInfo = JSON.parse(data);

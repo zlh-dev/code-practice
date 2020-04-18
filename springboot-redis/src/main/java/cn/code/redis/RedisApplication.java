@@ -10,10 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/03/25 23:56
  */
 @SpringBootApplication
-public class SpringbootRedisApplication {
+public class RedisApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootRedisApplication.class, args);
+        SpringApplication.run(RedisApplication.class, args);
     }
 
 }

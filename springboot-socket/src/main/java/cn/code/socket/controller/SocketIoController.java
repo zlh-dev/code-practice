@@ -1,6 +1,6 @@
 package cn.code.socket.controller;
 
-import cn.code.socket.util.SocketIo;
+import cn.code.socket.server.SocketIoServer;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +21,7 @@ public class SocketIoController {
     @GetMapping("/pushMessage")
     @ApiOperation("测试消息推送")
     public void pushMessage() {
-        SocketIo socketio = new SocketIo();
+        SocketIoServer socketio = new SocketIoServer();
         //这里发送的消息内容可以结合具体场景自定义对象
         socketio.pushArr("connect_msg", "今天下午2点开会");
     }

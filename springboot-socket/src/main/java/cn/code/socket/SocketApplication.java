@@ -10,10 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/04/10 23:12
  */
 @SpringBootApplication
-public class SpringbootSocketApplication {
+public class SocketApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootSocketApplication.class, args);
+        SpringApplication.run(SocketApplication.class, args);
     }
 
 }

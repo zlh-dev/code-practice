@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement
 @MapperScan("cn.code.mybatisplus.mapper")
-public class SpringbootMybatisplusApplication {
+public class MybatisplusApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootMybatisplusApplication.class, args);
+        SpringApplication.run(MybatisplusApplication.class, args);
     }
 
 }

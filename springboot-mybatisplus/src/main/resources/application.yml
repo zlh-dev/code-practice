@@ -1,10 +1,10 @@
 ######################## common config : ########################
 server:
-  port: 8881
+  port: 8801
   tomcat:
     uri-encoding: UTF-8
   servlet:
-    context-path: /springboot-mybatisplus # 访问前缀
+    context-path: /mybatisplus # 访问前缀
 
 ######################## spring config : ########################
 spring:

@@ -1,22 +1,36 @@
-package cn.code.socket.util;
+package cn.code.socket.server;
 
+import cn.hutool.core.thread.ThreadUtil;
 import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
+import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Collection;
 
 /**
- * netty-socketio工具类 创建、添加和启动客户端 消息推送 关闭服务
+ * socket-io服务类 创建、添加和启动客户端 消息推送 关闭服务
  *
  * @author zlh-dev
  * @date 2020/04/05 14:15
  */
-public class SocketIo {
+public class SocketIoServer {
+
+    @Value("${socket.config.host-name}")
+    private String hostName;
+
+    @Value("${socket.config.port}")
+    private int port;
+
+    @Value("${socket.config.max-frame-payload-length}")
+    private int maxFramePayloadLength;
+
+    @Value("${socket.config.max-http-content-length}")
+    private int maxHttpContentLength;
 
     private static SocketIOServer socketIOServer;
-
 
     /**
      * 创建服务添加客户端
@@ -26,13 +40,13 @@ public class SocketIo {
         // 配置
         Configuration conf = new Configuration();
         // 指定要主机ip地址，这个和页面请求ip地址一致
-        conf.setHostname("localhost");
+        conf.setHostname(hostName);
         // 指定端口号
-        conf.setPort(9092);
+        conf.setPort(port);
         // 设置最大的WebSocket帧内容长度限制
-        conf.setMaxFramePayloadLength(1024 * 1024);
+        conf.setMaxFramePayloadLength(maxFramePayloadLength);
         // 设置最大HTTP内容长度限制
-        conf.setMaxHttpContentLength(1024 * 1024);
+        conf.setMaxHttpContentLength(maxHttpContentLength);
 
         socketIOServer = new SocketIOServer(conf);
 
@@ -43,7 +57,6 @@ public class SocketIo {
         socketIOServer.start();
     }
 
-
     /**
      * 全体消息推送
      *
@@ -51,7 +64,6 @@ public class SocketIo {
      * @param content 推送的内容
      */
     public void pushArr(String type, Object content) {
-
         // 获取全部客户端
         Collection<SocketIOClient> allClients = socketIOServer.getAllClients();
         for (SocketIOClient socket : allClients) {
@@ -59,24 +71,21 @@ public class SocketIo {
         }
     }
 
-
     /**
      * 启动服务
      */
     public void startServer() {
-
-        if (socketIOServer == null) {
-            new Thread(this::startSocketIo).start();
+        if (ObjectUtils.isEmpty(socketIOServer)) {
+//            new Thread(this::startSocketIo).start();
+            ThreadUtil.execute(this::startSocketIo);
         }
     }
-
 
     /**
      * 停止服务
      */
-    public void stopSocketIo() {
-
-        if (socketIOServer != null) {
+    public void stopServer() {
+        if (ObjectUtils.isNotEmpty(socketIOServer)) {
             socketIOServer.stop();
             socketIOServer = null;
         }

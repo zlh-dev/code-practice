@@ -24,6 +24,7 @@
         <module>springboot-mybatisplus</module>
         <module>springboot-redis</module>
         <module>springboot-socket</module>
+        <module>springboot-oss</module>
     </modules>
 
     <properties>
@@ -31,17 +32,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>

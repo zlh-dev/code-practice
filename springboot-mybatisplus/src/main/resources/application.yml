@@ -27,7 +27,8 @@ spring:
   ######################## jdbc config : ########################
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/administrative_divisions?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8
+    url: jdbc:mysql://rm-bp1p3wmcw43ov19l9zo.mysql.rds.aliyuncs.com
+      用户名：dev_root:3306/administrative_divisions?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8
     username: dev_root
     password: 123@qweasd
 #    platform: mysql

@@ -37,7 +37,7 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.3.1</version>
         </dependency>
-        <!-- velocity -->
+        <!-- freemarker -->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>

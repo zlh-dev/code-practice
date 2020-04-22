@@ -2,6 +2,7 @@ package cn.code.socket.handler;
 
 import cn.code.socket.entity.MessageInfo;
 import cn.hutool.core.date.DateTime;
+import cn.hutool.core.util.ObjectUtil;
 import com.corundumstudio.socketio.AckRequest;
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
@@ -9,7 +10,6 @@ import com.corundumstudio.socketio.annotation.OnConnect;
 import com.corundumstudio.socketio.annotation.OnDisconnect;
 import com.corundumstudio.socketio.annotation.OnEvent;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -92,7 +92,7 @@ public class MessageEventHandler {
     public static void sendLogEvent() {
         String dateTime = new DateTime().toString("hh:mm:ss");
         for (UUID clientId : listClient) {
-            if (ObjectUtils.isEmpty(socketIoServer.getClient(clientId))) {
+            if (ObjectUtil.isEmpty(socketIoServer.getClient(clientId))) {
                 continue;
             }
             socketIoServer.getClient(clientId).sendEvent("enewbuy", "当前时间", dateTime);

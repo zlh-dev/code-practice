@@ -21,6 +21,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>springboot-commons</module>
         <module>springboot-mybatisplus</module>
         <module>springboot-redis</module>
         <module>springboot-socket</module>
@@ -49,18 +50,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- commons-lang3 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
-        </dependency>
-        <!-- commons-collections4 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>4.4</version>
-        </dependency>
         <!--lombok简化开发-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -71,7 +60,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
-            <version>5.2.5</version>
+            <version>5.3.1</version>
         </dependency>
         <!-- knife4j -->
         <dependency>

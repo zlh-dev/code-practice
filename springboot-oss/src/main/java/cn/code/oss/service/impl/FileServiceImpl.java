@@ -3,14 +3,15 @@ package cn.code.oss.service.impl;
 import cn.code.oss.config.OssConfig;
 import cn.code.oss.entity.FileResult;
 import cn.code.oss.service.FileService;
+import cn.hutool.core.util.StrUtil;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.model.ListObjectsRequest;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedInputStream;
@@ -90,10 +91,10 @@ public class FileServiceImpl implements FileService {
     private String getFilePath(String sourceFileName) {
         LocalDateTime dateTime = LocalDateTime.now();
         return "images/" + dateTime.getYear() + "/"
-                + dateTime.getMonth() + "/"
+                + dateTime.getMonth().getValue() + "/"
                 + dateTime.getDayOfMonth() + "/"
                 + dateTime.getHour() + dateTime.getMinute() + dateTime.getSecond() + dateTime.getNano() + "."
-                + StringUtils.substringAfterLast(sourceFileName, ".");
+                + StrUtil.subAfter(sourceFileName, ".", true);
     }
 
     /**

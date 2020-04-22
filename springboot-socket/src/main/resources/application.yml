@@ -6,6 +6,18 @@ server:
   servlet:
     context-path: /socket # \u8BBF\u95EE\u524D\u7F00
 
+######################## thymeleaf config : ########################
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    cache: false
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+    servlet:
+      content-type: text/html
+
 ######################## socket-io config : #####################
 socket:
   ip: localhost

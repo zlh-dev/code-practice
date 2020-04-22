@@ -1,6 +1,6 @@
 package cn.code.mybatisplus.temp.enums;
 
-import org.apache.commons.lang3.StringUtils;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 临时类型
@@ -12,10 +12,9 @@ public enum TempType {
     /**
      * 中国行政办事处excel文件模板
      */
-    ADMINISTRATIVE_OFFICE(FileType.EXC,"工作簿1.xlsx","工作簿1.xlsx")
-    ;
+    ADMINISTRATIVE_OFFICE(FileType.EXC, "工作簿1.xlsx", "工作簿1.xlsx");
 
-    private String FILE_TEMPLATE_PATH_FORMAT="%s/%s";
+    private final String FILE_TEMPLATE_PATH_FORMAT = "%s/%s";
     /**
      * 文件类行
      */
@@ -37,25 +36,27 @@ public enum TempType {
 
     /**
      * 模板文件路径
-     * @return
+     *
+     * @return {@link String}
      */
-    public String getFilePath(){
-        return String.format(FILE_TEMPLATE_PATH_FORMAT,fileType.getType(),getFileName());
+    public String getFilePath() {
+        return String.format(FILE_TEMPLATE_PATH_FORMAT, fileType.getType(), getFileName());
     }
 
     public String getFileName() {
         return fileName;
     }
 
-    public FileType getFileType(){
+    public FileType getFileType() {
         return fileType;
     }
 
     /**
-     * h获取默认文件名
-     * @return
+     * 获取默认文件名
+     *
+     * @return {@link String}
      */
     public String getDefaultFileName() {
-        return StringUtils.isBlank(defaultFileName) ? this.fileName : defaultFileName;
+        return StrUtil.isBlank(defaultFileName) ? this.fileName : defaultFileName;
     }
 }

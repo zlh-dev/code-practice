@@ -2,7 +2,7 @@ package cn.code.mybatisplus.temp.proce;
 
 import cn.code.mybatisplus.temp.bean.FileContent;
 import cn.code.mybatisplus.temp.enums.TempType;
-import org.apache.commons.lang3.StringUtils;
+import cn.hutool.core.util.StrUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
@@ -50,7 +50,7 @@ public abstract class AbstractProcession implements PersonalizedCustomization{
      */
     private FileContent fileNameEnhancement(TempType tempType,FileContent fileContent){
 
-        if(Objects.nonNull(fileContent) && StringUtils.isNoneBlank(fileContent.getFileName())){
+        if (Objects.nonNull(fileContent) && StrUtil.isNotBlank(fileContent.getFileName())) {
             return fileContent;
         }
 

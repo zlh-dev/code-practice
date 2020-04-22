@@ -20,9 +20,9 @@ spring:
 ######################## oss config : ########################
 aliyun:
   oss:
-    endpoint: 123 # 阿里云内网或者外网的访问地址
-    accessKeyId: 123 # 访问身份验证中用到用户标识
-    accessKeySecret: 123 # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
-    bucketName: 123 # oss的存储空间
-    urlPrefix: 123
-#    callback: http://localhost:8080/oss/callback # 文件上传成功后的回调地址
+    endpoint: oss-cn-hangzhou-internal.aliyuncs.com # 阿里云内网或者外网的访问地址
+    accessKeyId: LTAI4GF8EMVt1DUJ456VpJMH # 访问身份验证中用到用户标识
+    accessKeySecret: KdC1RbFjyrdQzzE2sPIWEe7dZ7KMaC # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucketName: code-dev # oss的存储空间
+    urlPrefix: code-dev.oss-cn-hangzhou-internal.aliyuncs.com
+    callback: http://localhost:8080/aliyun/oss/callback # 文件上传成功后的回调地址

@@ -57,7 +57,6 @@ mybatis-plus:
     map-underscore-to-camel-case: true # 是否开启自动驼峰命名规则（camel case）映射
     call-setters-on-nulls: true # MyBatis 在使用 resultMap 来映射查询结果中的列，如果查询结果中包含空值的列
     jdbc-type-for-null: 'null' # 如果type为空
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
   # MyBatis-Plus 全局策略配置
   global-config:
     banner: false # 是否显示mybatis-plus的图标

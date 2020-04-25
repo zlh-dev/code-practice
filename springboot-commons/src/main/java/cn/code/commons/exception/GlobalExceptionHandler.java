@@ -29,29 +29,19 @@ public class GlobalExceptionHandler {
     public Result error(Exception e) {
         log.error(e.getMessage());
         // 通用异常结果
-        return Result.error();
+        return Result.fail();
     }
 
     /**
      * 指定异常处理方法
      **/
-    @ExceptionHandler(NullPointerException.class)
-    @ResponseBody
-    public Result error(NullPointerException e) {
-        log.error(e.getMessage());
-        return Result.builder()
-                .code(ResultEnum.PARAM_ERROR.getCode())
-                .message("空指针异常")
-                .build();
-    }
-
     @ExceptionHandler(HttpClientErrorException.class)
     @ResponseBody
     public Result error(IndexOutOfBoundsException e) {
         log.error(e.getMessage());
         return Result.builder()
-                .code(ResultEnum.PARAM_ERROR.getCode())
-                .message("http请求异常")
+                .code(ResultEnum.REQUEST_ERROR.getCode())
+                .msg("http请求异常")
                 .build();
     }
 
@@ -64,7 +54,7 @@ public class GlobalExceptionHandler {
         log.error(e.getMessage());
         return Result.builder()
                 .code(500)
-                .message(e.getMessage())
+                .msg(e.getMessage())
                 .build();
     }
 }

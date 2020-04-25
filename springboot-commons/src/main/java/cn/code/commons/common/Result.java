@@ -2,8 +2,7 @@ package cn.code.commons.common;
 
 import cn.code.commons.constant.ResultEnum;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * 统一结果类
@@ -11,8 +10,7 @@ import lombok.Setter;
  * @author zlh-dev
  * @date 2020/04/19 13:25
  */
-@Getter
-@Setter
+@Data
 @Builder
 public class Result {
 
@@ -29,7 +27,7 @@ public class Result {
     /**
      * 返回信息
      */
-    private String message;
+    private String msg;
 
     /**
      * 返回数据
@@ -41,28 +39,111 @@ public class Result {
      */
     public static Result success() {
         return Result.builder()
+                .success(true)
                 .code(ResultEnum.SUCCESS.getCode())
-                .message(ResultEnum.SUCCESS.getMessage())
+                .msg(ResultEnum.SUCCESS.getMessage())
+                .build();
+    }
+
+    /**
+     * 自定义成功信息
+     *
+     * @param msg 消息
+     * @return {@link Result}
+     */
+    public static Result success(String msg) {
+        return Result.builder()
+                .success(true)
+                .code(ResultEnum.SUCCESS.getCode())
+                .msg(msg)
+                .build();
+    }
+
+    /**
+     * 自定义成功携带数据
+     *
+     * @param data 数据
+     * @return {@link Result}
+     */
+    public static Result success(Object data) {
+        return Result.builder()
+                .success(true)
+                .code(ResultEnum.SUCCESS.getCode())
+                .msg(ResultEnum.SUCCESS.getMessage())
+                .data(data)
+                .build();
+    }
+
+
+    /**
+     * 自定义成功信息和携带数据
+     *
+     * @param msg  消息
+     * @param data 数据
+     * @return {@link Result}
+     */
+    public static Result success(String msg, Object data) {
+        return Result.builder()
+                .success(true)
+                .code(ResultEnum.SUCCESS.getCode())
+                .msg(msg)
+                .data(data)
                 .build();
     }
 
     /**
      * 通用返回失败，未知错误
      */
-    public static Result error() {
+    public static Result fail() {
         return Result.builder()
+                .success(false)
                 .code(ResultEnum.UNKNOWN_ERROR.getCode())
-                .message(ResultEnum.UNKNOWN_ERROR.getMessage())
+                .msg(ResultEnum.UNKNOWN_ERROR.getMessage())
                 .build();
     }
 
     /**
-     * 设置结果，形参为结果枚举
+     * 自定义失败信息
+     *
+     * @param msg 消息
+     * @return {@link Result}
      */
-    public static Result result(ResultEnum result) {
+    public static Result fail(String msg) {
         return Result.builder()
-                .code(result.getCode())
-                .message(result.getMessage())
+                .success(false)
+                .code(ResultEnum.UNKNOWN_ERROR.getCode())
+                .msg(msg)
+                .build();
+    }
+
+    /**
+     * 自定义成功携带数据
+     *
+     * @param data 数据
+     * @return {@link Result}
+     */
+    public static Result fail(Object data) {
+        return Result.builder()
+                .success(false)
+                .code(ResultEnum.UNKNOWN_ERROR.getCode())
+                .msg(ResultEnum.UNKNOWN_ERROR.getMessage())
+                .data(data)
+                .build();
+    }
+
+    /**
+     * 自定义失败信息和携带数据
+     *
+     * @param msg  消息
+     * @param data 数据
+     * @return {@link Result}
+     */
+    public static Result fail(String msg, Object data) {
+        return Result.builder()
+                .success(false)
+                .code(ResultEnum.UNKNOWN_ERROR.getCode())
+                .msg(msg)
+                .data(data)
                 .build();
     }
 

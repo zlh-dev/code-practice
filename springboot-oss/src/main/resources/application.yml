@@ -20,9 +20,9 @@ spring:
 ######################## oss config : ########################
 aliyun:
   oss:
-    endpoint: oss-cn-hangzhou-internal.aliyuncs.com # 阿里云内网或者外网的访问地址
-    accessKeyId: LTAI4GF8EMVt1DUJ456VpJMH # 访问身份验证中用到用户标识
-    accessKeySecret: KdC1RbFjyrdQzzE2sPIWEe7dZ7KMaC # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
-    bucketName: code-dev # oss的存储空间
-    urlPrefix: code-dev.oss-cn-hangzhou-internal.aliyuncs.com
-    callback: http://localhost:8080/aliyun/oss/callback # 文件上传成功后的回调地址
+    endpoint: ENC(xyd8h5LA2IccNBN8CaLiSWKB9qrxbnn2LYuh2So+M5jko7Lt1ZMuq6uJ8D51SUixOQEh9g+wu3AxUYLMzE7YiEehavpqDH8sEKRVyJEzr+8=) # 阿里云内网或者外网的访问地址
+    access-key-id: ENC(A4qWydnhjzg4pNWGwQAoXj1hguNijhoYy+B390cjCmHIe2er2oquxiCEOogSWHoP8zAhyjEm3djwn7bulD+O2A==) # 访问身份验证中用到用户标识
+    access-key-secret: ENC(MgHtk36zIKXpr7M1bYUlWF8gmvILMXK8eIMCDC94enYQSfnOWRSw0bpJ5rkwRkd0l91+um0dVGPksAPnSMGi2g==) # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucket-name: ENC(X7aqlneQsRLZOH3cs44S00yFkxRxtEZ6ykVyCjt5rFHVyinSrwIu8g8W34df+1mE) # oss的存储空间
+    url-prefix: ENC(0+MJRcz9bK16nmS8uQ0JgPWtg1gYB2qL+hUDVbo5q6miczG0YrjFOLcsC7tJzw+ssY4o0DTrJBGEQHT/cuQUCQlnnMM/iymKk2yHCQy3vLM=)
+    callback: ENC(http://localhost:8080/aliyun/oss/callback) # 文件上传成功后的回调地址

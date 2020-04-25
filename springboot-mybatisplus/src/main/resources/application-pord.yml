@@ -24,12 +24,23 @@ spring:
     ansi:
       enabled: detect # 检查终端是否支持ANSI，是的话就采用彩色输出
 
+  ######################## thymeleaf config : ########################
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    cache: false
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML
+    servlet:
+      content-type: text/html
+
   ######################## jdbc config : ########################
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://rm-bp1p3wmcw43ov19l9125010.mysql.rds.aliyuncs.com:3306/administrative_divisions?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8
-    username: dev_root
-    password: 123@qweasd
+    username: ENC(chydEhU0v4hzOYMenZQl+vXNCQ93bolfQD2iHDxnWwwTgJpIbh6W7lJXh5dZXhYE)
+    password: ENC(EFNXhHjV6B5CSMJwQ4IcMPdolQyo8A93LLwlza5WjUwCetwS4GoP+VgmNCftoCTs)
     #    platform: mysql
     #    separator: ; # sql脚本中语句分隔符
     #    sql-script-encoding: utf-8 # sql文件的编码
@@ -71,4 +82,3 @@ logging:
   level:
     root: info
     org.springframework.boot.autoconfigure: error
-    cn.code.springbootmybatisplus.mapper: debug

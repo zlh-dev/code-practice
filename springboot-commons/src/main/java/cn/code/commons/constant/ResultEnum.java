@@ -14,15 +14,17 @@ public enum ResultEnum {
     /**
      * 成功
      */
-    SUCCESS(20000, "成功"),
+    SUCCESS(200, "success"),
+
+    /**
+     * 请求异常
+     */
+    REQUEST_ERROR(400, "request_error"),
+
     /**
      * 未知的错误
      */
-    UNKNOWN_ERROR(20001, "未知错误"),
-    /**
-     * 参数错误
-     */
-    PARAM_ERROR(20002, "参数错误");
+    UNKNOWN_ERROR(200, "unknown_error");
 
     /**
      * 响应状态码

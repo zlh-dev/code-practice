@@ -64,7 +64,7 @@ spring:
 #jasypt:
 #  encryptor:
 #    # 自定义盐
-#    password: TheWayOfArchitecture
+#    password: XXX
 #    # 自定义包裹密文字符串
 #    property:
 #      prefix: ENC(

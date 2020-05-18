@@ -1,18 +1,21 @@
 package cn.code.mybatisplus;
 
+import cn.code.mybatisplus.entity.Provinces;
 import cn.code.mybatisplus.service.ProvincesService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import java.util.List;
+
+//@SpringBootTest
 class MybatisplusApplicationTests {
+
     @Autowired
     private StringEncryptor encryptor;
     @Autowired
@@ -20,9 +23,11 @@ class MybatisplusApplicationTests {
 
     @Test
     void contextLoads() throws JsonProcessingException {
-        Page<Object> objects = PageHelper.startPage(1, 3).doSelectPage(() -> provincesService.list());
+        PageHelper.startPage(1, 3);
+        List<Provinces> list = provincesService.list();
+        PageInfo<Provinces> pageInfo = new PageInfo<>(list);
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(objects);
+        String json = mapper.writeValueAsString(pageInfo);
         System.out.println(json);
     }
 

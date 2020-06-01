@@ -39,8 +39,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://rm-bp1p3wmcw43ov19l9125010.mysql.rds.aliyuncs.com:3306/administrative_divisions?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8
-    username: ENC(chydEhU0v4hzOYMenZQl+vXNCQ93bolfQD2iHDxnWwwTgJpIbh6W7lJXh5dZXhYE)
-    password: ENC(EFNXhHjV6B5CSMJwQ4IcMPdolQyo8A93LLwlza5WjUwCetwS4GoP+VgmNCftoCTs)
+    username: ENC(/jtmzRPay3mDGtfXVLpzzF/fyQZglXPzWIQg5S9C9R2mWFE80CQ+r7h2iwmcfH5Z)
+    password: ENC(E1hEl4gLi4GrO4DD7XSpTTuPGzvm3pG5INGqRZ7F80LoPE/UCx416On5bs1yyttf)
     #    platform: mysql
     #    separator: ; # sql脚本中语句分隔符
     #    sql-script-encoding: utf-8 # sql文件的编码

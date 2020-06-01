@@ -39,9 +39,9 @@ spring:
   ######################## jdbc config : ########################
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://rm-bp1p3wmcw43ov19l9zo.mysql.rds.aliyuncs.com:3306/administrative_divisions?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8
-    username: ENC(chydEhU0v4hzOYMenZQl+vXNCQ93bolfQD2iHDxnWwwTgJpIbh6W7lJXh5dZXhYE)
-    password: ENC(EFNXhHjV6B5CSMJwQ4IcMPdolQyo8A93LLwlza5WjUwCetwS4GoP+VgmNCftoCTs)
+    url: ENC(Z05578yfcqy8qG1DLBMYQaN1TJZJrkcNK1H8LGlXLAjTvkk2lJ7+hxgPjMlris1Ynl2p6RCfRoDJH2djvd+G3rLwGX+IhGsqMMcQ0UwsWSZ5KBTHQq337QHF9PLonRUXvlsB+PCOlQ4kzPMhQz/5I3e34a9UUswwxo0Cw7xHz7N7aZ62dkcwfvmDcJAzDjE4uI8TaeyU7w4dInrQHP9UJVyPjTqWkHktPpZ15DozeTnHA/3P1R2E/QvhXWzBnRSf)
+    username: ENC(/jtmzRPay3mDGtfXVLpzzF/fyQZglXPzWIQg5S9C9R2mWFE80CQ+r7h2iwmcfH5Z)
+    password: ENC(E1hEl4gLi4GrO4DD7XSpTTuPGzvm3pG5INGqRZ7F80LoPE/UCx416On5bs1yyttf)
     #    platform: mysql
     #    separator: ; # sql脚本中语句分隔符
     #    sql-script-encoding: utf-8 # sql文件的编码
@@ -58,6 +58,38 @@ spring:
       idle-timeout: 30000 # 允许连接在池中闲置的最长时间。 此设置仅适用于minimumIdle定义为小于maximumPoolSize。一旦池达到连接，空闲连接将不会退出minimumIdle。连接是否因闲置而退出，最大变化量为+30秒，平均变化量为+15秒。在超时之前，连接永远不会退出。值为0意味着空闲连接永远不会从池中删除。允许的最小值是10000ms（10秒）。 默认值：600000（10分钟）
       connection-timeout: 3000 # 此属性控制客户端（即您）将等待来自池的连接的最大毫秒数。如果在没有可用连接的情况下超过此时间，则会抛出SQLException。最低可接受的连接超时时间为250 ms。默认值：30000（30秒）
       max-lifetime: 600000 # 池中连接的最大生存期。正在使用的连接永远不会退休，只有在关闭后才会被删除。在逐个连接的基础上，应用较小的负面衰减来避免池中的大量消失。 我们强烈建议设置此值，并且应该比任何数据库或基础设施规定的连接时间限制短几秒。 值为0表示没有最大寿命（无限寿命），当然是idleTimeout设定的主题。 默认值：1800000（30分钟）
+
+  ######################## jackson config : ########################
+  jackson:
+    # 设置属性命名策略,对应jackson下PropertyNamingStrategy中的常量值，SNAKE_CASE-返回的json驼峰式转下划线，json body下划线传到后端自动转驼峰式
+    property-naming-strategy: SNAKE_CASE
+    # 全局设置@JsonFormat的格式pattern
+    date-format: yyyy-MM-dd HH:mm:ss
+    # 当地时区
+    locale: zh
+    # 设置全局时区
+    time-zone: GMT+8
+    # 常用，全局设置pojo或被@JsonInclude注解的属性的序列化方式
+    default-property-inclusion: NON_NULL #不为空的属性才会序列化,具体属性可看JsonInclude.Include
+    # 常规默认,枚举类SerializationFeature中的枚举属性为key，值为boolean设置jackson序列化特性,具体key请看SerializationFeature源码
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true # 返回的java.util.date转换成timestamp
+      FAIL_ON_EMPTY_BEANS: true # 对象为空时是否报错，默认true
+    # 枚举类DeserializationFeature中的枚举属性为key，值为boolean设置jackson反序列化特性,具体key请看DeserializationFeature源码
+    deserialization:
+      # 常用,json中含pojo不存在属性时是否失败报错,默认true
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+    # 枚举类MapperFeature中的枚举属性为key，值为boolean设置jackson ObjectMapper特性
+    # ObjectMapper在jackson中负责json的读写、json与pojo的互转、json tree的互转,具体特性请看MapperFeature,常规默认即可
+    mapper:
+      # 使用getter取代setter探测属性，如类中含getName()但不包含name属性与setName()，传输的vo json格式模板中依旧含name属性
+      USE_GETTERS_AS_SETTERS: true #默认false
+    # 枚举类JsonParser.Feature枚举类中的枚举属性为key，值为boolean设置jackson JsonParser特性
+    # JsonParser在jackson中负责json内容的读取,具体特性请看JsonParser.Feature，一般无需设置默认即可
+    parser:
+      ALLOW_SINGLE_QUOTES: true # 是否允许出现单引号,默认false
+    # 枚举类JsonGenerator.Feature枚举类中的枚举属性为key，值为boolean设置jackson JsonGenerator特性，一般无需设置默认即可
+    # JsonGenerator在jackson中负责编写json内容,具体特性请看JsonGenerator.Feature
 
 ######################## mybatis-plus config : ########################
 mybatis-plus:
@@ -76,8 +108,8 @@ mybatis-plus:
     db-config:
       id-type: input # 全局默认主键类型，AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID"
       logic-delete-field: deleted  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
-      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
-      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+      logic-delete-value: true # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: false # 逻辑未删除值(默认为 0)
 
 ######################## page-helper config : ########################
 pagehelper:
@@ -87,11 +119,21 @@ pagehelper:
   row-bounds-with-count: true
   helper-dialect: mysql
 
+######################## oss config : ########################
+aliyun:
+  oss:
+    endpoint: ENC(xyd8h5LA2IccNBN8CaLiSWKB9qrxbnn2LYuh2So+M5jko7Lt1ZMuq6uJ8D51SUixOQEh9g+wu3AxUYLMzE7YiEehavpqDH8sEKRVyJEzr+8=) # 阿里云内网或者外网的访问地址
+    access-key-id: ENC(A4qWydnhjzg4pNWGwQAoXj1hguNijhoYy+B390cjCmHIe2er2oquxiCEOogSWHoP8zAhyjEm3djwn7bulD+O2A==) # 访问身份验证中用到用户标识
+    access-key-secret: ENC(MgHtk36zIKXpr7M1bYUlWF8gmvILMXK8eIMCDC94enYQSfnOWRSw0bpJ5rkwRkd0l91+um0dVGPksAPnSMGi2g==) # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucket-name: ENC(X7aqlneQsRLZOH3cs44S00yFkxRxtEZ6ykVyCjt5rFHVyinSrwIu8g8W34df+1mE) # oss的存储空间
+    url-prefix: ENC(0+MJRcz9bK16nmS8uQ0JgPWtg1gYB2qL+hUDVbo5q6miczG0YrjFOLcsC7tJzw+ssY4o0DTrJBGEQHT/cuQUCQlnnMM/iymKk2yHCQy3vLM=)
+    callback: ENC(http://localhost:8080/aliyun/oss/callback) # 文件上传成功后的回调地址
+
 ######################## jasypt config : ########################
 jasypt:
   encryptor:
     # 自定义盐
-    password: XXX
+    password: EncryptSalt
     # 自定义包裹密文字符串
     property:
       prefix: ENC(
@@ -103,3 +145,4 @@ logging:
     root: info
     org.springframework.boot.autoconfigure: error
     cn.code.springbootmybatisplus.mapper: debug
+

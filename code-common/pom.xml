@@ -14,4 +14,13 @@
     <description>Commons project for Spring Boot</description>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.11</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
 </project>

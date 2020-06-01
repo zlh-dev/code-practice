@@ -24,8 +24,6 @@
         <module>code-common</module>
         <module>code-controller</module>
         <module>code-service</module>
-        <module>springboot-socket</module>
-        <module>springboot-oss</module>
     </modules>
 
     <properties>
@@ -69,6 +67,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>easyexcel</artifactId>
                 <version>2.1.6</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>3.8.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

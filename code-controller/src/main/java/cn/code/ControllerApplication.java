@@ -1,7 +1,6 @@
 package cn.code;
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -15,7 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableKnife4j
 @SpringBootApplication
 @EnableTransactionManagement
-@MapperScan("cn.code.mapper")
 public class ControllerApplication {
 
     public static void main(String[] args) {

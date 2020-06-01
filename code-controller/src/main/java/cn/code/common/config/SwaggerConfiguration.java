@@ -32,10 +32,10 @@ public class SwaggerConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot - Mybatis plus")
+                .title("Code Practice")
                 .description("Spring Boot Project")
                 .termsOfServiceUrl("http://localhost:8081/controller")
-                .contact(new Contact("zlh-dev", "https://github.com/zlh-dev/code-practice", "zhanglh30@gmail.com"))
+                .contact(new Contact("zlh,wyx,jwb", "https://github.com/zlh-dev/code-practice", "@gmail.com"))
                 .version("1.0")
                 .build();
     }

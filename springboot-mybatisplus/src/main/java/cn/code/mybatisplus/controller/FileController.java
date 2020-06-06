@@ -40,7 +40,7 @@ public class FileController {
      * 目前之兼容了 excel文件类型，DOC，PDF文件类型会在后续更新
      *
      * @param templateType 模板类型
-     * @param request      请求
+     * @param request      请求对象
      * @return {@link ResponseEntity<Object>}
      */
     @GetMapping("/response/{templateType}")
